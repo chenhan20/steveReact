@@ -1,0 +1,16 @@
+{
+  "name": "myapp",
+  "description": "",
+  "main": "",
+  "authors": [
+    "steve"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/chenhan20/SteveChuangCard",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "4.0.0-alpha.6",
+    "jquery-mousewheel": "^3.1.13",
+    "react": "^16.1.0"
+  }
+}
