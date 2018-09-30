@@ -10,6 +10,10 @@ var SteveRouter = require('./routes/steve');
 
 var app = express();
 
+app.use(express.static(path.join(__dirname, 'public')));
+//根目錄新增  
+app.use(express.static(path.join(__dirname, 'bower_components')));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
