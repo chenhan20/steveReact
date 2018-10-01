@@ -5,7 +5,8 @@ var sass = require('gulp-sass');            //sass編譯
 var babel = require('gulp-babel');          //轉為es5語法
 var uglify = require('gulp-uglify');        //縮小js檔案(es6似乎不支援)
 var concat = require('gulp-concat');        //合併檔案
-
+var browserify = require('browserify');
+var babelify = require('babelify');
 
 gulp.task('default', function () {
     console.log('Hello Gulp Default Task');
@@ -24,14 +25,22 @@ gulp.task('js', function () {
     return gulp.src('js/*.js')
         //  .pipe(react())
         // .pipe(concat('all.js'))
-        // .pipe(babel())
+        .pipe(babel())
         // .pipe(uglify())
-        .pipe(gulp.dest('public/build/js'));
+    .pipe(gulp.dest('public/build/js'));
 });
+
+gulp.task('jsx',function(){
+    return gulp.src("jsx/*.jsx").
+    pipe(babel({
+        plugins: ['transform-react-jsx']
+    })).
+    pipe(gulp.dest("public/build/js")); 
+})
 
 gulp.task('watch', function() {
     gulp.watch('sass/*.sass', ['sass']);
     gulp.watch('js/*.js', ['js']);
 });
 
-gulp.task('default',['watch']);
+gulp.task('default',['watch','sass','js']);
